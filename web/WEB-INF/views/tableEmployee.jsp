@@ -51,6 +51,11 @@
          <input type="hidden" name="departmentId" value=${modelDepartment.id}>
          <input type="submit" value="Add" class="myinput">
       </form>
+      <br><br><br>
+      <form action="table_Department">
+        <label>Back to Department table</label>
+        <input type="submit" value="Back" class="myinput">
+      </form>
     </div>
 
   </div>
