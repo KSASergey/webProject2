@@ -49,7 +49,7 @@ public class EmployeeDaoImpl implements IEmployeeDao {
     }
 
     public Employee getEmployee(Integer id) {
-        String SQL = "SELECT * FROM employee WHERE id = ?";
+        String SQL = "SELECT *, '' AS NameDepartment FROM employee WHERE id = ?";
         JdbcTemplate jdbcTemplateObject = new JdbcTemplate(dataSource);
         List <Employee> listEmployee = jdbcTemplateObject.query(SQL, new EmployeeMapper(), id);
         return listEmployee.get(0);
