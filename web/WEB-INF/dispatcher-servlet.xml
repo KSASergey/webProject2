@@ -7,18 +7,13 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- Configures the annotation-driven Spring MVC Controller programming model. this tag works in Servlet MVC only!-->
     <!-- Enables the Spring MVC @Controller programming epam.model -->
     <mvc:annotation-driven />
 
     <!-- Handles HTTP GET requests for  <mvc:annotation-driven />/resources/** by efficiently serving
         up static resources in the ${webappRoot}/resources directory -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
-
-    <!-- telling container to take care of annotations stuff -->
-    <context:annotation-config />
-
-    <!-- declaring base package -->
-    <context:component-scan base-package="epam" />
 
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources
         in the /WEB-INF/views directory -->
@@ -28,17 +23,29 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!-- telling container to take care of annotations stuff -->
+    <!-- Activates various annotations to be detected in bean classes -->
+    <context:annotation-config />
+
+    <!-- declaring base package -->
+    <!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
+    For example @Controller and @Service. Make sure to set the correct base-package-->
+    <context:component-scan base-package="epam" />
+
     <!--declare beans -->
-    <bean id="idepartmentDao" class="epam.dao.DepartmentDaoImpl" />
+    <!--<bean id="idepartmentDao" class="epam.dao.DepartmentDaoImpl" />-->
     <bean id="iemployeeDao" class="epam.dao.EmployeeDaoImpl" />
 
     <!-- declare datasource bean -->
-    <bean id="dataSource"
+    <bean id="dataSourceJDBC"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/mydbtest" />
         <property name="username" value="root" />
         <property name="password" value="root" />
     </bean>
+
+    <!-- Load Hibernate related configuration -->
+    <import resource="hibernate-context.xml" />
 
 </beans>

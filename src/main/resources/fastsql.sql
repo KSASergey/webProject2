@@ -1,1 +1,0 @@
-update department set Department = "Отдел1" where id = 1

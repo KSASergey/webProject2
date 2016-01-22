@@ -26,14 +26,14 @@ COMMIT;
 
 CREATE TABLE `mydbtest`.`employee` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `DepartmentID` INT NOT NULL,
+  `ID_Department` INT NOT NULL,
   `FullName` VARCHAR(45) NOT NULL,
   `BirthDate` DATE NOT NULL,
   `Salary` INT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `ID_Department_idx` (`DepartmentID` ASC),
-  CONSTRAINT `DepartmentID`
-  FOREIGN KEY (`DepartmentID`)
+  INDEX `ID_Department_idx` (`ID_Department` ASC),
+  CONSTRAINT `ID_Department`
+  FOREIGN KEY (`ID_Department`)
   REFERENCES `mydbtest`.`department` (`ID`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
@@ -42,11 +42,11 @@ CREATE TABLE `mydbtest`.`employee` (
 
 COMMIT;
 
-INSERT INTO `mydbtest`.`employee` (`ID`, `DepartmentID`, `FullName`, `BirthDate`, `Salary`) VALUES ('1', '1', 'петров', '1999-08-11', '1992');
-INSERT INTO `mydbtest`.`employee` (`ID`, `DepartmentID`, `FullName`, `BirthDate`, `Salary`) VALUES ('2', '1', 'Иванов', '1981-06-01', '2000');
-INSERT INTO `mydbtest`.`employee` (`ID`, `DepartmentID`, `FullName`, `BirthDate`, `Salary`) VALUES ('3', '2', 'Сергеевиц', '1989-12-28', '34858');
-INSERT INTO `mydbtest`.`employee` (`ID`, `DepartmentID`, `FullName`, `BirthDate`, `Salary`) VALUES ('4', '3', 'Олегович', '1995-05-10', '1234');
-INSERT INTO `mydbtest`.`employee` (`ID`, `DepartmentID`, `FullName`, `BirthDate`, `Salary`) VALUES ('5', '2', 'Викторович', '1985-08-21', '9000');
+INSERT INTO `mydbtest`.`employee` (`ID`, `ID_Department`, `FullName`, `BirthDate`, `Salary`) VALUES ('1', '1', 'петров', '1999-08-11', '1992');
+INSERT INTO `mydbtest`.`employee` (`ID`, `ID_Department`, `FullName`, `BirthDate`, `Salary`) VALUES ('2', '1', 'Иванов', '1981-06-01', '2000');
+INSERT INTO `mydbtest`.`employee` (`ID`, `ID_Department`, `FullName`, `BirthDate`, `Salary`) VALUES ('3', '2', 'Сергеевиц', '1989-12-28', '34858');
+INSERT INTO `mydbtest`.`employee` (`ID`, `ID_Department`, `FullName`, `BirthDate`, `Salary`) VALUES ('4', '3', 'Олегович', '1995-05-10', '1234');
+INSERT INTO `mydbtest`.`employee` (`ID`, `ID_Department`, `FullName`, `BirthDate`, `Salary`) VALUES ('5', '2', 'Викторович', '1985-08-21', '9000');
 
 
 COMMIT;

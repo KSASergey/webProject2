@@ -9,17 +9,14 @@
         <!--<welcome-file>index.jsp</welcome-file>-->
     <!--</welcome-file-list>-->
 
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>-->
-            <!--/WEB-INF/applicationContext.xml,-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+            <!--,-->
             <!--/WEB-INF/SpringContext.xml-->
-        <!--</param-value>-->
-    <!--</context-param>-->
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+        </param-value>
+    </context-param>
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -27,21 +24,17 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>dispatcher</servlet-name>-->
-        <!--<url-pattern>*.form</url-pattern>-->
-    <!--</servlet-mapping>-->
-
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>dispatcher</servlet-name>-->
-        <!--<url-pattern>*.html</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
+
+    <!--For russian encoding-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

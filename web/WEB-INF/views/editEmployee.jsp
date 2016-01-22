@@ -19,7 +19,7 @@
 
     <div align="center">
         <spring:form method="post" modelAttribute="modelEmployee" action="update_Employee">
-            <h2 class="all"> Edit 'Employee' for Department: '${modelDepartment.department}' </h2>
+            <h2 class="all"> Edit 'Employee' for Department: '${tempDepartment.department}' </h2>
             <table class="myformat">
                 <tr>
                     <td>
@@ -50,7 +50,6 @@
 
             <input type="submit" value="Submit" class="myinput">
             <spring:hidden path="id" value="${employee.id}" />
-            <spring:hidden path="departmentId" value="${modelDepartment.id}" />
         </spring:form>
     </div>
 

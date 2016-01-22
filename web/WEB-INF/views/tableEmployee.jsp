@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring_tags" uri="http://www.springframework.org/tags" %>
 
@@ -30,7 +31,9 @@
           <td>${employee.id}</td>
           <td>${modelDepartment.department}</td>
           <td>${employee.fullName}</td>
-          <td align="right">${employee.birthDate}</td>
+          <td align="right">
+              <fmt:formatDate pattern="dd-MM-yyyy" value="${employee.birthDate}"/>
+          </td>
           <td align="right">${employee.salary}</td>
           <td>
             <button type="submit" name="id" value=${employee.id} form="update_Employee">Update</button>
@@ -46,9 +49,9 @@
     <br>
 
     <div align="center">
-      <form method="get" modelAttribute="modelEmployee" action="add_Employee">
+      <form method="get" modelAttribute="modelDepartment" action="add_Employee">
          <label>Add new 'Employee' for Department: '${modelDepartment.department}'</label>
-         <input type="hidden" name="departmentId" value=${modelDepartment.id}>
+         <input type="hidden" name="id" value=${modelDepartment.id}>
          <input type="submit" value="Add" class="myinput">
       </form>
       <br><br><br>
