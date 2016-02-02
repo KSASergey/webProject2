@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jdbc
+                           http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <!-- telling container to take care of annotations stuff -->
+    <!-- Activates various annotations to be detected in bean classes -->
+    <context:annotation-config />
+
+    <!-- declaring base package -->
+    <!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
+    For example @Controller and @Service. Make sure to set the correct base-package-->
+    <context:component-scan base-package="epam" />
+
+    <!--declare beans -->
+    <!--<bean id="idepartmentDao" class="epam.dao.DepartmentDaoImpl" />-->
+    <!--<bean id="iemployeeDao" class="epam.dao.EmployeeDaoImpl" />-->
+
+    <jdbc:initialize-database data-source="dataSourceHIB"
+                              enabled="true">
+        <!--<jdbc:script location="classpath:test_data.sql" />-->
+        <jdbc:script location="classpath:db-schema.sql" />
+        <jdbc:script location="classpath:db-test-data.sql" />
+    </jdbc:initialize-database>
+
+
+    <!-- Load Hibernate related configuration -->
+    <import resource="testHibernate-context.xml" />
+</beans>
+
+

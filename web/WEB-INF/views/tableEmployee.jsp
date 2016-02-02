@@ -7,7 +7,7 @@
 <%--<!DOCTYPE html>--%>
 <html>
   <head>
-    <spring_tags:url value="../resources/css/table.css" var="mainCss" />
+    <spring_tags:url value="/resources/css/table.css" var="mainCss" />
     <link href="${mainCss}" rel="stylesheet"  type="text/css" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

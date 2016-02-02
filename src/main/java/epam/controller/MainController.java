@@ -21,6 +21,7 @@ import java.util.List;
  *  Class controler for spring MVC
  */
 @Controller
+//@RestController
 @SessionAttributes("tempDepartment") // temp department for insert new employee
 public class MainController {
 
@@ -44,13 +45,14 @@ public class MainController {
      * First method on start application
      * @return redirict for maping '/table_Department'
      */
-    @RequestMapping(value = "/")
-    public ModelAndView main() {
+    @RequestMapping(value = "/", method = RequestMethod.GET )
+    public String main() {
         logger.info("Fist start '/'");
-        ModelAndView modelAndView = new ModelAndView();
+//        ModelAndView modelAndView = new ModelAndView();
 //        modelAndView.setViewName("index");
-         modelAndView.setViewName("redirect:/table_Department");
-        return modelAndView;
+//        modelAndView.setViewName("redirect:/table_Department");
+//        return modelAndView;
+        return "redirect:/table_Department";
     }
 
     /**
@@ -144,7 +146,7 @@ public class MainController {
         logger.info("View table to show all employee in selecting department");
         ModelAndView modelAndView = new ModelAndView();
         int idDepartment = department.getId();
-//         full depatment
+         /*full depatment*/
         department = iDepartmentDao.getDepartment(idDepartment);
         modelAndView.addObject("modelDepartment", department);
         List<Employee> employeeList = iEmployeeDao.getEmployeeList(idDepartment);
@@ -244,22 +246,36 @@ public class MainController {
     @RequestMapping(value = "/find_Employee", method = RequestMethod.GET)
     public ModelAndView findEmployee(@RequestParam() @DateTimeFormat(pattern = "yyyy-MM-dd") Date firstBirthDate,
                                                      @DateTimeFormat(pattern = "yyyy-MM-dd") Date lastBirthDate) {
+
         logger.info("View table to show all employee in selecting department");
-        String searshRange;
-        DateFormat myDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        if (lastBirthDate == null) {
-            lastBirthDate = firstBirthDate;
-            searshRange = "for date: '" + myDateFormat.format(firstBirthDate) + "'";
-        }
-        else {
-            searshRange = "for range date: '" + myDateFormat.format(firstBirthDate) + "' - '"
-                                              + myDateFormat.format(lastBirthDate) + "'";
-        }
+        String searshRange = SearshRange(firstBirthDate, lastBirthDate);
+
         ModelAndView modelAndView = new ModelAndView();
         List<Employee> employeeList = iEmployeeDao.findEmployee(firstBirthDate, lastBirthDate);
         modelAndView.addObject("modelEmployeeList", employeeList);
         modelAndView.addObject("searshRange", searshRange);
         modelAndView.setViewName("findEmployee");
         return modelAndView;
+    }
+
+    /**
+     * Generates the search range in the form of the string and converts the date to the form "dd-MM-yyyy"
+     * @param firstBirthDate - the start date
+     * @param lastBirthDate - the end Date
+     * @return Returns a string type: "for date: '@firstBirthDate'"
+     *         or "for range date: '@firstBirthDate' - '@lastBirthDate'" if lastBirthDate = null
+     */
+    public String SearshRange(Date firstBirthDate, Date lastBirthDate) {
+        DateFormat myDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String searshRange;
+        if (lastBirthDate == null) {
+            lastBirthDate = firstBirthDate;
+            searshRange = "for date: '" + myDateFormat.format(firstBirthDate) + "'";
+        }
+        else {
+            searshRange = "for range date: '" + myDateFormat.format(firstBirthDate) + "' - '"
+                    + myDateFormat.format(lastBirthDate) + "'";
+        }
+        return searshRange;
     }
 }

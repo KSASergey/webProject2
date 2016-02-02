@@ -1,13 +1,9 @@
 package epam.dao;
 
 import epam.model.Department;
-
-import javax.sql.DataSource;
 import java.util.List;
 
 public interface IDepartmentDao {
-
-//    public void setDataSource(DataSource dataSource);
 
     public void insertDepartment(Department department);
 

@@ -1,14 +1,10 @@
 package epam.dao;
 
 import epam.model.Employee;
-
-import javax.sql.DataSource;
 import java.util.Date;
 import java.util.List;
 
 public interface IEmployeeDao {
-
-//    public void setDataSource(DataSource dataSource);
 
     public void insertEmployee(Employee employee);
 

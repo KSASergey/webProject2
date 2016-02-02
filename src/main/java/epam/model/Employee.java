@@ -1,7 +1,5 @@
 package epam.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -18,15 +16,6 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "ID_Department")
     private Department department;
-
-//    @Column(name = "ID_Department")
-//    private Integer iD_Department;
-
-//    @ManyToOne
-//    @JoinColumn(name = "ID_Department")
-//    @Column(name="NameDepartment")
-//    @Column(insertable=false, updatable=false)
-//    private String nameDepartment;
 
     @Column(name="FullName")
     private String fullName;
@@ -45,14 +34,6 @@ public class Employee {
         return this.id;
     }
 
-//    public void setID_Department (Integer  iD_Department) {
-//        this.iD_Department = iD_Department;
-//    }
-
-//    public Integer  getID_Department() {
-//        return this.iD_Department;
-//    }
-
     public void setDepartment (Department department) {
         this.department = department;
     }
@@ -60,14 +41,6 @@ public class Employee {
     public Department  getDepartment() {
         return this.department;
     }
-
-//    public void setNameDepartment(String  nameDepartment) {
-//        this.nameDepartment = nameDepartment;
-//    }
-
-//    public String  getNameDepartment() {
-//        return this.nameDepartment;
-//    }
 
     public void setFullName(String fullName) { this.fullName = fullName; }
 
@@ -90,7 +63,12 @@ public class Employee {
     }
 
     public String toString() {
-        return "Employee - Id:  " + id + ",  nameDepartment:  " + getDepartment().getDepartment() + ",  ID_Department:  " +
-                getDepartment().getId() + ", fullName: " + fullName + ", ЬirthDate: " + birthDate + ", salary: " + salary;
+        if (getDepartment() != null) {
+            return "Employee - Id:  " + id + ",  nameDepartment:  " + getDepartment().getDepartment() + ",  ID_Department:  " +
+                    getDepartment().getId() + ", fullName: " + fullName + ", ЬirthDate: " + birthDate + ", salary: " + salary;
+        } else {
+            return "Employee - Id:  " + id + ",  Department:  null"
+                    + ", fullName: " + fullName + ", ЬirthDate: " + birthDate + ", salary: " + salary;
+        }
     }
 }

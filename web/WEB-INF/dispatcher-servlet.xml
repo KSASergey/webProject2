@@ -32,20 +32,7 @@
     For example @Controller and @Service. Make sure to set the correct base-package-->
     <context:component-scan base-package="epam" />
 
-    <!--declare beans -->
-    <!--<bean id="idepartmentDao" class="epam.dao.DepartmentDaoImpl" />-->
-    <bean id="iemployeeDao" class="epam.dao.EmployeeDaoImpl" />
-
-    <!-- declare datasource bean -->
-    <bean id="dataSourceJDBC"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/mydbtest" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
-    </bean>
-
     <!-- Load Hibernate related configuration -->
-    <import resource="hibernate-context.xml" />
+    <import resource="classpath*:hibernate-context.xml" />
 
 </beans>
