@@ -1,4 +1,5 @@
-# CREATE SCHEMA `mydbtest` DEFAULT CHARACTER SET utf8 ;
+DROP SCHEMA if exists `mydbtest`;
+CREATE SCHEMA `mydbtest` DEFAULT CHARACTER SET utf8 ;
 
 DROP TABLE if exists `mydbtest`.`employee` ;
 DROP TABLE if exists `mydbtest`.`department` ;
