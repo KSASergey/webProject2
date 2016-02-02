@@ -344,20 +344,20 @@
                 <version>2.6</version>
                 <configuration>
                     <webXml>${basedir}/web/WEB-INF/web.xml</webXml>
-                    <warSourceDirectory>${basedir}web</warSourceDirectory>
+                    <warSourceDirectory>${basedir}/web</warSourceDirectory>
                     <!--<classifier>local</classifier>-->
-                    <webResources>
-                        <resource>
-                            <directory>web\WEB-INF</directory>
-                            <filtering>true</filtering>
-                            <targetPath>WEB-INF</targetPath>
-                        </resource>
-                        <resource>
-                            <directory>web\resources</directory>
-                            <filtering>true</filtering>
-                            <targetPath>resources</targetPath>
-                        </resource>
-                    </webResources>
+                    <!--<webResources>-->
+                        <!--<resource>-->
+                            <!--<directory>web\WEB-INF</directory>-->
+                            <!--<filtering>true</filtering>-->
+                            <!--<targetPath>WEB-INF</targetPath>-->
+                        <!--</resource>-->
+                        <!--<resource>-->
+                            <!--<directory>web\resources</directory>-->
+                            <!--<filtering>true</filtering>-->
+                            <!--<targetPath>resources</targetPath>-->
+                        <!--</resource>-->
+                    <!--</webResources>-->
                 </configuration>
             </plugin>
             <!--<plugin>-->

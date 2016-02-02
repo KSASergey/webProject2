@@ -37,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"file:/web/WEB-INF/dispatcher-servlet.xml",
+@ContextConfiguration(locations = {"file:web/WEB-INF/dispatcher-servlet.xml",
                                    "classpath*:testApplicationContext.xml"})
 @WebAppConfiguration
 public class MainControllerTest {
